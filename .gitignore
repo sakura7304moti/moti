@@ -2,3 +2,5 @@ test/twitter/image/
 .ipynb_checkpoints/
 model/twitter/__pycache__/twitter.cpython-39.pyc
 utils/__pycache__/
+*.pyc
+.vscode/

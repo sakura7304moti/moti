@@ -5,3 +5,4 @@
 - model : serviceの詳細処理
 - option : modelで使用する変数やファイルをまとめる
 - utils : project全体で使いまわせるクラスや関数
+- job : バッチファイル

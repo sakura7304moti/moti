@@ -1,6 +1,6 @@
 #Import--------------------------------------------------
 import pandas as pd
-from tqdm.notebook import tqdm
+from tqdm import tqdm
 import snscrape.modules.twitter as sntwitter
 import time
 import os
@@ -13,7 +13,7 @@ sys.path.append('../../utils')
 import utilDatetime
 import utilFile
 #Prepare--------------------------------------------------
-yaml_path = '../../option/output.yaml'
+yaml_path = r'F:\Project\moti\option\output.yaml'
 with open(yaml_path) as file:
     yml = yaml.safe_load(file)
     
@@ -25,7 +25,7 @@ base_csv_output = yml['twitter']['base']['csv']
 today = datetime.datetime.today()
 today_text = utilDatetime.today_yyyymmddhhmmss()
 
-holo_list = '../../option/HoloFanArt.csv'
+holo_list = r'F:\Project\moti\option\HoloFanArt.csv'
 df=pd.read_csv(holo_list, index_col=0)
 word_list=df['FanArt'].tolist()
 
@@ -56,7 +56,7 @@ def get_tweets(query):
         if (today - rep_date).days >= 14:
             break
         if(len(tweets) % 100 == 0 and len(tweets) > 0):
-            print(' ＊'+str((today - rep_date).days), end="")
+            print('＊', end="")
         #1000枚を上限(時間がかかるため)
         if(len(tweets) > 1000):
             break
