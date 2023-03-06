@@ -52,13 +52,13 @@ def get_tweets(query):
             except:
                 pass
         rep_date = tweet.date.replace(tzinfo=None)
-        #ツイートと今日の日付が2週間以上の差があれば終了
-        if (today - rep_date).days >= 14:
+        #ツイートと今日の日付が30日以上の差があれば終了
+        if (today - rep_date).days >= 30:
             break
         if(len(tweets) % 100 == 0 and len(tweets) > 0):
             print('＊', end="")
-        #1000枚を上限(時間がかかるため)
-        if(len(tweets) > 1000):
+        #3000枚を上限(時間がかかるため)
+        if(len(tweets) > 3000):
             break
     
     #データフレームにして保存する
@@ -80,14 +80,18 @@ def save_csv(tweet_df,mode,query):
 #URLを指定して画像を保存する
 def image_download(url,save_path):
     if not os.path.exists(save_path):
-        response = urllib.request.urlopen(url)
-        if response.status == 200:
-            try:
-                with open(save_path, "wb") as f:
-                    f.write(response.read())
-                    time.sleep(0.5)
-            except:
-                pass
+        try:
+            response = urllib.request.urlopen(url)
+        except:
+            pass
+        else:
+            if response.status == 200:
+                try:
+                    with open(save_path, "wb") as f:
+                        f.write(response.read())
+                        time.sleep(0.5)
+                except:
+                    pass
                 
 #保存先を取得
 def get_save_path(url,mode,query):
