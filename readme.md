@@ -1,3 +1,6 @@
+## 今まで作成したプログラムをまとめるところ
+
+### 構成
 - repository : 他人のgit repositoryの環境を配置
 - controller:  main py script
 - note:  main ipynb
