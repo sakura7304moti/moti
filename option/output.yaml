@@ -9,3 +9,7 @@ twitter:
     base : 
         image : 'G:/Data/Twitter_ver3/base/image'
         csv : 'G:/Data/Twitter_ver3/base/csv'
+        
+pixiv:
+    url : 'G:/Data/Pixiv/URL_list'
+    image : "G:/Data/Pixiv"

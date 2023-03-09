@@ -13,7 +13,10 @@ sys.path.append('../../utils')
 import utilDatetime
 import utilFile
 #Prepare--------------------------------------------------
-yaml_path = r'F:\Project\moti\option\output.yaml'
+base_dir_name = os.path.dirname(os.path.dirname(__file__))
+dir_name = os.path.dirname(base_dir_name)
+
+yaml_path = os.path.join(dir_name,r'\option\output.yaml')
 with open(yaml_path) as file:
     yml = yaml.safe_load(file)
     
@@ -25,7 +28,7 @@ base_csv_output = yml['twitter']['base']['csv']
 today = datetime.datetime.today()
 today_text = utilDatetime.today_yyyymmddhhmmss()
 
-holo_list = r'F:\Project\moti\option\HoloFanArt.csv'
+holo_list = os.path.join(dir_name,r'\option\HoloFanArt.csv')
 df=pd.read_csv(holo_list, index_col=0)
 word_list=df['FanArt'].tolist()
 

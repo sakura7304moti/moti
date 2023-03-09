@@ -5,9 +5,14 @@ import os
 import glob
 from tqdm.notebook import tqdm
 
+base_dir_name = os.path.dirname(os.path.dirname(__file__))
+dir_name = os.path.dirname(base_dir_name)
+
+yaml_path = os.path.join(dir_name,f"option/settings.yaml")
+json_path = os.path.join(dir_name,f"option/credentials.json")
 def auth_gd():
-    gauth = GoogleAuth(settings_file=f"F:/Project/moti/option/settings.yaml")
-    gauth.credentials = Storage(f"F:/Project/moti/option/credentials.json").get()
+    gauth = GoogleAuth(settings_file=yaml_path)
+    gauth.credentials = Storage(json_path).get()
     gauth.CommandLineAuth()
     drive = GoogleDrive(gauth)
     return drive

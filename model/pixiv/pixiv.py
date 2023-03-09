@@ -20,6 +20,14 @@ import csv
 import pandas as pd
 import datetime
 
+base_dir_name = os.path.dirname(os.path.dirname(__file__))
+dir_name = os.path.dirname(base_dir_name)
+
+yaml_path = os.path.join(dir_name,r'\option\output.yaml')
+with open(yaml_path) as file:
+    yml = yaml.safe_load(file)
+url_path = yml['pixiv']['url']
+image_path = yml['pixiv']['image']
 
 class PixivDL:
     def setter(self, target, r18, update_ignore=True):
@@ -34,14 +42,14 @@ class PixivDL:
         self.pixiv_url = "https://accounts.pixiv.net/login?return_to=https%3A%2F%2Fwww.pixiv.net%2F&lang=ja&source=pc&view_type=page"
 
         # ログインデータ
-        with open(r"E:\sakura0moti\option\pixiv\key.yaml", "r") as yf:
+        with open(os.path.join(dir_name,r"\option\pixivKey.yaml"), "r") as yf:
             dic = yaml.safe_load(yf)
             self.username = dic["user"]
             self.password = dic["pass"]
         yf.close()
 
         # 基準となる保存先
-        self.save_base_path = r"G:\Data\Pixiv"
+        self.save_base_path = image_path
         self.save_dir = os.path.join(self.save_base_path, self.save_tag, self.target)
         if not os.path.exists(self.save_dir):
             os.makedirs(self.save_dir)
@@ -75,7 +83,7 @@ class PixivDL:
         print(self.save_dir, "\n")
 
         # URLリストの保存先
-        self.url_base_save_dir = r"G:\Data\Pixiv\URL_list"
+        self.url_base_save_dir = url_path
         if not os.path.exists(self.url_base_save_dir):
             os.makedirs(self.url_base_save_dir)
 
@@ -288,7 +296,7 @@ def basePixivDownload(target, r18, update_ignore=True):
 
 
 def holoPixivDownload(r18=1):
-    holo_csv_path = "../option/pixiv/HoloFullName.csv"
+    holo_csv_path = os.path.join(dir_name,"option/pixiv/HoloFullName.csv")
     df = pd.read_csv(holo_csv_path, index_col=0)
     holoNameList = df["FullName"].to_list()
 
