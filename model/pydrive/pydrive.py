@@ -63,6 +63,11 @@ def check_files(pid, fname, drive=None):
         return list[0]
     return Falsepydri
 #----------------------------------------------------------------------
+"""
+pid : 基準となるフォルダのid
+dir_name : 基準となるフォルダで作成するフォルダ
+file_path_list : コピーするファイルのパスのリスト(Local)
+"""
 def copy(pid,dir_name,file_path_list):
     drive = auth_gd()
     #copy folder id--------------------------
