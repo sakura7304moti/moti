@@ -22,7 +22,7 @@ import datetime
 
 dir_name = r'F:\Project\moti'
 
-yaml_path = os.path.join(dir_name,r'\option\output.yaml')
+yaml_path = os.path.join(dir_name,r'option\output.yaml')
 with open(yaml_path) as file:
     yml = yaml.safe_load(file)
 url_path = yml['pixiv']['url']
@@ -41,7 +41,7 @@ class PixivDL:
         self.pixiv_url = "https://accounts.pixiv.net/login?return_to=https%3A%2F%2Fwww.pixiv.net%2F&lang=ja&source=pc&view_type=page"
 
         # ログインデータ
-        with open(os.path.join(dir_name,r"\option\pixivKey.yaml"), "r") as yf:
+        with open(os.path.join(dir_name,r"option\pixivKey.yaml"), "r") as yf:
             dic = yaml.safe_load(yf)
             self.username = dic["user"]
             self.password = dic["pass"]
