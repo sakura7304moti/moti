@@ -20,8 +20,7 @@ import csv
 import pandas as pd
 import datetime
 
-base_dir_name = os.path.dirname(os.path.dirname(__file__))
-dir_name = os.path.dirname(base_dir_name)
+dir_name = r'F:\Project\moti'
 
 yaml_path = os.path.join(dir_name,r'\option\output.yaml')
 with open(yaml_path) as file:

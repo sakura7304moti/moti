@@ -3,10 +3,9 @@ from pydrive2.drive import GoogleDrive
 from oauth2client.file import Storage
 import os
 import glob
-from tqdm.notebook import tqdm
+from tqdm import tqdm
 
-base_dir_name = os.path.dirname(os.path.dirname(__file__))
-dir_name = os.path.dirname(base_dir_name)
+dir_name = r'F:\Project\moti'
 
 yaml_path = os.path.join(dir_name,f"option/settings.yaml")
 json_path = os.path.join(dir_name,f"option/credentials.json")

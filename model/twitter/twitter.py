@@ -8,13 +8,13 @@ import urllib
 import datetime
 import yaml
 import sys
+from pathlib import Path
 
 sys.path.append('../../utils')
 import utilDatetime
 import utilFile
 #Prepare--------------------------------------------------
-base_dir_name = os.path.dirname(os.path.dirname(__file__))
-dir_name = os.path.dirname(base_dir_name)
+dir_name = r'F:\Project\moti'
 
 yaml_path = os.path.join(dir_name,r'\option\output.yaml')
 with open(yaml_path) as file:
