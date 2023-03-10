@@ -6,12 +6,13 @@ import jaconv
 from tqdm import tqdm
 import datetime
 
+dir_name = r'F:\Project\moti\option'
 #キャラクターの名前のリスト
-df=pd.read_csv('ssbu.csv')
+df=pd.read_csv(os.path.join(dir_name,'ssbu.csv'))
 char_list=df['0'].to_list()
 
 #保存先のフォルダを取得
-df=pd.read_csv('ssbu_dict.csv')
+df=pd.read_csv(os.path.join(dir_name,'ssbu_dict.csv'))
 tag_key_list=df['key'].to_list()
 tag_val_list=df['val'].to_list()
 
@@ -86,4 +87,5 @@ def main():
         else:
             changed_path=get_movie_path(path)
             file_copy(path,changed_path)
-main()
+if __name__ == "__main__":
+    main()

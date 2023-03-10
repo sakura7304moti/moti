@@ -63,17 +63,18 @@ def check_files(pid, fname, drive=None):
     query += ' and title = "' + os.path.basename(fname) + '"'
 
     list =  drive.ListFile({'q': query}).GetList()
+    print('list:',list)
     if len(list)> 0:
         return list[0]
-    return Falsepydri
+    return False
 #----------------------------------------------------------------------
 """
 pid : 基準となるフォルダのid
 dir_name : 基準となるフォルダで作成するフォルダ
 file_path_list : コピーするファイルのパスのリスト(Local)
 """
+drive = auth_gd()
 def copy(pid,dir_name,file_path_list):
-    drive = auth_gd()
     #copy folder id--------------------------
     copyed_id = ""
     for f in drive.ListFile({'q': '"{}" in parents'.format(pid)}).GetList():
@@ -82,3 +83,6 @@ def copy(pid,dir_name,file_path_list):
     #file copy---------------------------------
     for path in tqdm(path_list):
         upload_file(copyed_id,path,drive)
+        
+def upload(pid,path):
+    upload_file(pid,path,drive)

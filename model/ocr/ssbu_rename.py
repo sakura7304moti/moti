@@ -112,3 +112,6 @@ def main():
     for path in tqdm(movie_list):
         with redirect_stdout(open(os.devnull, 'w')):
             rename_movie(path)
+        
+if __name__ == "__main__":
+    main()

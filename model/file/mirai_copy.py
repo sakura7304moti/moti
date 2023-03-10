@@ -17,19 +17,20 @@ def get_drive_path(path):
         os.makedirs(drive_copy_dir)
     return os.path.join(drive_copy_dir,os.path.basename(path))
 
-C_list=glob.glob(r'G:\素材\スマブラの動画\20*\**\*未来*.mp4', recursive=True)
-C_list = [path for path in C_list if not os.path.exists(get_copy_path(path))]
-print('count:',len(C_list))
+if __name__ == "__main__":
+    C_list=glob.glob(r'G:\素材\スマブラの動画\20*\**\*未来*.mp4', recursive=True)
+    C_list = [path for path in C_list if not os.path.exists(get_copy_path(path))]
+    print('count:',len(C_list))
 
-for path in tqdm(C_list):
-    #ローカルへコピー
-    copy_to = get_copy_path(path)
-    shutil.copyfile(path,copy_to)
+    for path in tqdm(C_list):
+        #ローカルへコピー
+        copy_to = get_copy_path(path)
+        shutil.copyfile(path,copy_to)
 
-    #ドライブ用に別フォルダへコピー
-    drive_path = get_drive_path(path)
-    shutil.copyfile(path,drive_path)
+        #ドライブ用に別フォルダへコピー
+        drive_path = get_drive_path(path)
+        shutil.copyfile(path,drive_path)
 
-print('OK!!!')
-time.sleep(3)
+    print('OK!!!')
+    time.sleep(3)
 
